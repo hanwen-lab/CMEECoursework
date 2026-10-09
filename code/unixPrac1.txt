@@ -1,0 +1,15 @@
+#1        wc -l data/fasta/*.fasta 
+#Because the last line doesn't have an "/n". There are a total of 27 lines. Since the last line doesn't have an "/n", it means there are actually 28 lines.
+ 
+  #2        tail -n +2 data/fasta/e_coli.fasta
+#1.Start printing the entire file from the second line. When using "tail", it defaults to printing from the end of the file. "-n" is used to control the number of lines, and "+2" starts from the second line in the positive direction.
+2.The header is merely information, not data.
+
+  #3        tail -n +2 data/fasta/e_coli.fasta|tr -d '\n'|wc -c
+#"tail -n +2" is used to display all the content, "tr -d '\n'" is used to remove the newline characters, and "wc -c" is used to list the total number of remaining characters.
+  
+  #4        tail -n +2 data/fasta/e_coli.fasta|tr -d '\n'|grep -o 'ATCG'|wc -l
+#The final result is 24537. The command "grep -o 'ATCG'" finds one instance of "ATCG" per line.
+
+  #5        tail -n +2 data/fasta/e_coli.fasta|tr -d '\n'|grep -o '[ATCG]'|wc -l|printf '(A+T)/(G+C)'|bc -l
+#Use "grep -o '[ATCG]'" to find the individual counts of A/T/C/G characters, count how many times each appears in each line, and print out (A+T)/(G+C). Use "bc -l" to calculate the result with decimal points.
