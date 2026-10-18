@@ -1,2 +1,13 @@
 *~
 *.tmp
+# Python cache
+__pycache__/
+*.pyc
+
+# Generated results
+results/*.csv
+
+# Local system and R files
+.DS_Store
+.RData
+.Rhistory
